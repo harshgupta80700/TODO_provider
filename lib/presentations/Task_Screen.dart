@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider_practice/models/TaskModel.dart';
 
 class TaskPage extends StatelessWidget {
+
+  final Task task;
+  TaskPage({
+    @required this.task
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(

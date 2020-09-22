@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider_practice/locator.dart';
+import 'package:provider_practice/services/TaskService.dart';
 
 class TaskDetails extends StatefulWidget {
   @override
@@ -6,6 +8,13 @@ class TaskDetails extends StatefulWidget {
 }
 
 class _TaskDetailsState extends State<TaskDetails> {
+
+  TaskService _taskService = locator<TaskService>();
+
+  TextEditingController _titleController = TextEditingController();
+  TextEditingController _descriptionController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,20 +26,24 @@ class _TaskDetailsState extends State<TaskDetails> {
         padding:  EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
         child: Column(
           children: [
-            TextFormField(),
-            TextFormField(),
+            TextFormField(
+              controller: _titleController,
+            ),
+            TextFormField(
+              controller: _descriptionController,
+            ),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   RaisedButton(
-                    onPressed: (){},
+                    onPressed: _addTask,
                     color: Colors.black,
                     textColor: Colors.blueAccent,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)
                     ),
-                    child: Text("Submit"),
+                    child: Text("Add a Task"),
                   )
                 ],
               ),
@@ -39,5 +52,15 @@ class _TaskDetailsState extends State<TaskDetails> {
         ),
       ),
     );
+  }
+
+  _addTask(){
+    Map<String,dynamic> map = {
+      "title": _titleController.text,
+      "description": _descriptionController.text
+    };
+
+    _taskService.addTask(map);
+
   }
 }

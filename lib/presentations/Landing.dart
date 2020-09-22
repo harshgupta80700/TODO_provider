@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider_practice/presentations/Task_Screen.dart';
+import 'package:provider_practice/presentations/TaskList.dart';
 
 class Landing extends StatelessWidget {
   @override
@@ -11,7 +11,7 @@ class Landing extends StatelessWidget {
       ),
       body: Padding(
         padding:  EdgeInsets.all(15.0),
-        child: TaskPage(),
+        child: TaskList()
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
