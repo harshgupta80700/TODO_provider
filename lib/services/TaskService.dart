@@ -15,6 +15,7 @@ class TaskService{
       "status": taskStatus.OPEN,
       "id": uuid.v1()
     });
+    print(task.toString());
     _taskProvider.addTask(Task.fromMap(task));
   }
 }

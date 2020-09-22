@@ -62,5 +62,7 @@ class _TaskDetailsState extends State<TaskDetails> {
 
     _taskService.addTask(map);
 
+    Navigator.pop(context);
+
   }
 }

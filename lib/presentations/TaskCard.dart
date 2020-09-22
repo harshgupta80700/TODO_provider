@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider_practice/models/TaskModel.dart';
 
-class TaskPage extends StatelessWidget {
+class TaskCard extends StatelessWidget {
 
   final Task task;
-  TaskPage({
+  TaskCard({
     @required this.task
   });
 
@@ -23,15 +23,15 @@ class TaskPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("title"),
-              Text("Status")
+              Text(task.title),
+              Text(task.status.toString())
             ],
           ),
           SizedBox(height: 10,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("description"),
+              Text(task.description),
               Icon(Icons.delete,color: Colors.red,)
             ],
           ),
