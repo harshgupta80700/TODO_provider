@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_practice/locator.dart';
 import 'package:provider_practice/providers/floatingactionbuttonprovider.dart';
+import 'package:provider_practice/providers/supplyProvider.dart';
 
 void main() {
   setupLocator();
@@ -11,13 +12,16 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return MultiProvider(
+      providers: supplyProvider(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: MyHomePage(),
       ),
-      home: MyHomePage(),
     );
   }
 }
@@ -31,6 +35,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   ButtonProvider buttonProvider = locator<ButtonProvider>();
+
+  @override
+  void initState() {
+    super.initState();
+    print(buttonProvider.tapCount);
+  }
 
 
 
@@ -50,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
 
       body: Consumer<ButtonProvider>(
-        builder: (ctx,provider,child){
+        builder: (context,provider,child){
           return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
