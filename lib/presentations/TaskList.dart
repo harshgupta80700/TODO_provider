@@ -12,7 +12,7 @@ class TaskList extends StatefulWidget {
 
 class _TaskListState extends State<TaskList> {
 
-  TaskProvider taskProvider = locator<TaskProvider>();
+  //TaskProvider taskProvider = locator<TaskProvider>();
 
   @override
   Widget build(BuildContext context) {
