@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_practice/locator.dart';
-import 'package:provider_practice/providers/floatingactionbuttonprovider.dart';
+import 'package:provider_practice/providers/buttonprovider.dart';
 import 'package:provider_practice/providers/supplyProvider.dart';
 
 void main() {
@@ -26,42 +26,27 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  ButtonProvider buttonProvider = locator<ButtonProvider>();
-
-  @override
-  void initState() {
-    super.initState();
-    print(buttonProvider.tapCount);
-  }
-
+class MyHomePage extends StatelessWidget {
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Consumer<ButtonProvider>(
+      builder: (context,provider,child){
+        return Scaffold(
 
-      appBar: AppBar(),
+            appBar: AppBar(),
 
-        floatingActionButton: FloatingActionButton(
-          onPressed:(){
-            buttonProvider.tapCount = buttonProvider.tapCount + 1;
-            print(buttonProvider.tapCount);
-          },
-          tooltip: 'Increment',
-          child: Icon(Icons.add),
-        ),
+            floatingActionButton: FloatingActionButton(
+              onPressed:(){
+                provider.tapCount = provider.tapCount + 1;
+                print(provider.tapCount);
+              },
+              tooltip: 'Increment',
+              child: Icon(Icons.add),
+            ),
 
-      body: Consumer<ButtonProvider>(
-        builder: (context,provider,child){
-          return Center(
+            body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -74,9 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-            );
-        }
-      ),
+            )
+        );
+      },
+
     );
   }
 }

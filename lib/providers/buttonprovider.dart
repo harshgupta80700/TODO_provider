@@ -7,6 +7,7 @@ class ButtonProvider extends ChangeNotifier{
 
   set tapCount(int value){
     _tapCount = value;
+    print("inside providers " + tapCount.toString());
     notifyListeners();
   }
 }
