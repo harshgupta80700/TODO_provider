@@ -13,6 +13,12 @@ class Landing extends StatelessWidget {
         padding:  EdgeInsets.all(15.0),
         child: TaskPage(),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.pushNamed(context, "/taskdetails");
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
