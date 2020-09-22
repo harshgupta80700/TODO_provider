@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:provider_practice/locator.dart';
 import 'package:provider_practice/providers/buttonprovider.dart';
 import 'package:provider_practice/providers/supplyProvider.dart';
+import 'package:provider_practice/routes/routes.dart';
 
 void main() {
   setupLocator();
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: MyHomePage(),
+        routes: routes,
+        initialRoute: "/",
       ),
     );
   }
@@ -62,7 +64,6 @@ class MyHomePage extends StatelessWidget {
             )
         );
       },
-
     );
   }
 }
