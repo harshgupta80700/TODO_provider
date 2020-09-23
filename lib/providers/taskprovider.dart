@@ -5,9 +5,15 @@ class TaskProvider extends ChangeNotifier{
 
   List<Task> _tasks = [];
   List<Task> get tasks => _tasks;
-
   set tasks(List<Task> task){
     _tasks = task;
+    notifyListeners();
+  }
+
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  set isLoading(bool value){
+    _isLoading = value;
     notifyListeners();
   }
 

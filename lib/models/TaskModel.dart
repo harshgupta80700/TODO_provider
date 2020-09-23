@@ -6,7 +6,7 @@ class Task {
   String id;
   String title;
   String description;
-  taskStatus status;
+  String status;
 
   Task({
     @required this.id,
@@ -16,7 +16,7 @@ class Task {
   });
 
   Task.fromMap(Map<String,dynamic> task){
-    this.id = task["id"];
+    this.id = task["_id"];
     this.title = task["title"];
     this.description = task["description"];
     this.status = task["status"];
