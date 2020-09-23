@@ -24,7 +24,13 @@ class TaskCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(task.title),
-              Text(task.status.toString())
+              Text(task.status.toString()),
+              IconButton(
+                icon: Icon(Icons.edit,color: Colors.black,),
+                onPressed: (){
+                  Navigator.pushNamed(context, "/taskdetails", arguments: this.task);
+                },
+              )
             ],
           ),
           SizedBox(height: 10,),
