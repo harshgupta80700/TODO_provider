@@ -33,7 +33,7 @@ class _TaskCardState extends State<TaskCard> {
               Text(widget.task.title),
               Text(widget.task.status.toString()),
               IconButton(
-                icon: Icon(Icons.edit,color: Colors.black,),
+                icon: Icon(Icons.edit,color: Colors.blue,),
                 onPressed: (){
                   Navigator.pushNamed(context, "/taskdetails", arguments: this.widget.task);
                 },

@@ -23,5 +23,9 @@ class TaskService{
     _taskProvider.deleteTask(id);
   }
 
+  updateTask(Task task){
+    _taskProvider.updatetask(task);
+  }
+
 
 }

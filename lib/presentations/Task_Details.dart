@@ -88,12 +88,19 @@ class _TaskDetailsState extends State<TaskDetails> {
     if(_titleController.text.length == 0 || _descriptionController.text.length == 0){
       showToast("Required");
     }else{
-      Map<String,dynamic> map = {
-        "title": _titleController.text,
-        "description": _descriptionController.text
-      };
 
-      _taskService.addTask(map);
+      if(task!= null){
+        task.title = _titleController.text;
+        task.description = _descriptionController.text;
+        _taskService.updateTask(task);
+      }else{
+        Map<String,dynamic> map = {
+          "title": _titleController.text,
+          "description": _descriptionController.text
+        };
+
+        _taskService.addTask(map);
+      }
 
       Navigator.pop(context);
     }

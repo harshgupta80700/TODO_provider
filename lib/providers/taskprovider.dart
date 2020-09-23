@@ -21,4 +21,10 @@ class TaskProvider extends ChangeNotifier{
     notifyListeners();
   }
 
+  updatetask(Task task){
+    int index = _tasks.indexWhere((t) => t.id == task.id);
+    _tasks.replaceRange(index, index+1, [task]);
+    notifyListeners();
+  }
+
 }
