@@ -18,4 +18,10 @@ class TaskService{
     print(task.toString());
     _taskProvider.addTask(Task.fromMap(task));
   }
+
+  deleteTask(String id){
+    _taskProvider.deleteTask(id);
+  }
+
+
 }

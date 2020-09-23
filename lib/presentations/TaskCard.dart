@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider_practice/locator.dart';
 import 'package:provider_practice/models/TaskModel.dart';
+import 'package:provider_practice/services/TaskService.dart';
 
-class TaskCard extends StatelessWidget {
+class TaskCard extends StatefulWidget {
 
   final Task task;
   TaskCard({
     @required this.task
   });
 
+  @override
+  _TaskCardState createState() => _TaskCardState();
+}
+
+class _TaskCardState extends State<TaskCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,12 +30,12 @@ class TaskCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(task.title),
-              Text(task.status.toString()),
+              Text(widget.task.title),
+              Text(widget.task.status.toString()),
               IconButton(
                 icon: Icon(Icons.edit,color: Colors.black,),
                 onPressed: (){
-                  Navigator.pushNamed(context, "/taskdetails", arguments: this.task);
+                  Navigator.pushNamed(context, "/taskdetails", arguments: this.widget.task);
                 },
               )
             ],
@@ -37,12 +44,19 @@ class TaskCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(task.description),
-              Icon(Icons.delete,color: Colors.red,)
+              Text(widget.task.description),
+              IconButton(
+                icon: Icon(Icons.delete,color: Colors.red,),
+                onPressed: _deleteTask,
+              )
             ],
           ),
         ],
       ),
     );
+  }
+
+  _deleteTask(){
+    locator<TaskService>().deleteTask(widget.task.id);
   }
 }
