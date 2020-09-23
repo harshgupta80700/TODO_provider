@@ -16,7 +16,7 @@ class _TaskListState extends State<TaskList> {
     return Consumer<TaskProvider>(
         builder: (ctx,provider,child){
           return ListView.builder(
-            //physics: Ne,
+            physics: BouncingScrollPhysics(),
             //dragStartBehavior:DragStartBehavior.down,
               itemCount: provider.tasks.length,
               itemBuilder: (context,index){
